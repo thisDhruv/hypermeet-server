@@ -41,6 +41,9 @@ io.on("connection",(socket)=>{
         console.log("incoming msg");
         io.to(to).emit("incoming:message", { from: socket.id,message:message});
         // io.to(socket.id).emit("incoming:message", { from: socket.id,message:message});
-
+    });
+    socket.on("transcript:outgoing", ({ to, speech,fromemail }) => {
+        console.log("incoming msg");
+        io.to(to).emit("transcript:incoming", { from: socket.id,speech:speech,fromemail:fromemail});
     });
 })
